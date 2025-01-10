@@ -6,9 +6,12 @@ import jakarta.persistence.*;
 public class Cards {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO,generator = "native")
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @Column(name = "card_id")
     private Long cardId;
+
+    @Column(name = "mobile_number")
+    private String mobileNumber;
 
     @Column(name = "card_number")
     private String cardNumber;
@@ -18,20 +21,21 @@ public class Cards {
     private String cardType;
 
     @Column(name = "total_limit")
-    private Long totalLimit;
+    private int totalLimit;
 
     @Column(name = "amount_used")
-    private Long amountUsed;
+    private int amountUsed;
 
     @Column(name = "available_amount")
-    private Long availableAmount;
+    private int availableAmount;
 
     public Cards() {
     }
 
-    public Cards(Long cardId, String cardNumber, String cardType, Long totalLimit,
-                 Long amountUsed, Long availableAmount) {
+    public Cards(Long cardId, String mobileNumber, String cardNumber, String cardType, int totalLimit,
+                 int amountUsed, int availableAmount) {
         this.cardId = cardId;
+        this.mobileNumber = mobileNumber;
         this.cardNumber = cardNumber;
         this.cardType = cardType;
         this.totalLimit = totalLimit;
@@ -45,6 +49,14 @@ public class Cards {
 
     public void setCardId(Long cardId) {
         this.cardId = cardId;
+    }
+
+    public String getMobileNumber() {
+        return mobileNumber;
+    }
+
+    public void setMobileNumber(String mobileNumber) {
+        this.mobileNumber = mobileNumber;
     }
 
     public String getCardNumber() {
@@ -63,27 +75,27 @@ public class Cards {
         this.cardType = cardType;
     }
 
-    public Long getTotalLimit() {
+    public int getTotalLimit() {
         return totalLimit;
     }
 
-    public void setTotalLimit(Long totalLimit) {
+    public void setTotalLimit(int totalLimit) {
         this.totalLimit = totalLimit;
     }
 
-    public Long getAmountUsed() {
+    public int getAmountUsed() {
         return amountUsed;
     }
 
-    public void setAmountUsed(Long amountUsed) {
+    public void setAmountUsed(int amountUsed) {
         this.amountUsed = amountUsed;
     }
 
-    public Long getAvailableAmount() {
+    public int getAvailableAmount() {
         return availableAmount;
     }
 
-    public void setAvailableAmount(Long availableAmount) {
+    public void setAvailableAmount(int availableAmount) {
         this.availableAmount = availableAmount;
     }
 
@@ -91,6 +103,7 @@ public class Cards {
     public String toString() {
         return "Cards{" +
                 "cardId=" + cardId +
+                "mobileNumber=" + mobileNumber + '\'' +
                 ", cardNumber='" + cardNumber + '\'' +
                 ", cardType='" + cardType + '\'' +
                 ", totalLimit='" + totalLimit + '\'' +

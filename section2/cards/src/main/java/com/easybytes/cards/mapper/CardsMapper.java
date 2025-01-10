@@ -14,4 +14,15 @@ public class CardsMapper {
         cardsDto.setAvailableAmount(cards.getAvailableAmount());
         return cardsDto;
     }
+
+    public static Cards mapToCard(CardsDto cardsDto, Cards cards) {
+
+        cards.setMobileNumber(cardsDto.getMobileNumber());
+        cards.setCardType(cardsDto.getCardType());
+        cards.setCardNumber(cardsDto.getCardNumber());
+        cards.setAmountUsed(cardsDto.getAmountUsed());
+        cards.setAvailableAmount(cardsDto.getAvailableAmount());
+        cards.setTotalLimit(cardsDto.getTotalLimit());
+        return cards;
+    }
 }
