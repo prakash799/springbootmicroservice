@@ -5,6 +5,10 @@ import jakarta.validation.constraints.Pattern;
 
 public class CardsDto {
 
+    @NotEmpty(message = "Mobile number cannot be empty")
+    @Pattern(regexp = "(^$|[0-9]{10})", message = "Mobile Number must be 10 digits")
+    private String mobileNumber;
+
     @NotEmpty(message = "Card Number cannot be empty")
     @Pattern(regexp = "(^$|[0-9]{16})", message = "Card number must be of 16 digits")
     private String cardNumber;
@@ -15,15 +19,23 @@ public class CardsDto {
 
     @NotEmpty(message = "Total Limit cannot be empty")
     @Pattern(regexp = "(^$|[0-9]{6})", message = "Total limit must be of 6 digits")
-    private Long totalLimit;
+    private int totalLimit;
 
     @NotEmpty(message = "Amount Used cannot be empty")
     @Pattern(regexp = "(^$|[0-9]{6})", message = "Amount used must be of 6 digits")
-    private Long amountUsed;
+    private int amountUsed;
 
     @NotEmpty(message = "Available Amount cannot be empty")
     @Pattern(regexp = "(^$|[0-9]{6})", message = "Available amount must be of 6 digits")
-    private Long availableAmount;
+    private int availableAmount;
+
+    public String getMobileNumber() {
+        return mobileNumber;
+    }
+
+    public void setMobileNumber(String mobileNumber) {
+        this.mobileNumber = mobileNumber;
+    }
 
     public String getCardNumber() {
         return cardNumber;
@@ -41,27 +53,27 @@ public class CardsDto {
         this.cardType = cardType;
     }
 
-    public Long getTotalLimit() {
+    public int getTotalLimit() {
         return totalLimit;
     }
 
-    public void setTotalLimit(Long totalLimit) {
+    public void setTotalLimit(int totalLimit) {
         this.totalLimit = totalLimit;
     }
 
-    public Long getAmountUsed() {
+    public int getAmountUsed() {
         return amountUsed;
     }
 
-    public void setAmountUsed(Long amountUsed) {
+    public void setAmountUsed(int amountUsed) {
         this.amountUsed = amountUsed;
     }
 
-    public Long getAvailableAmount() {
+    public int getAvailableAmount() {
         return availableAmount;
     }
 
-    public void setAvailableAmount(Long availableAmount) {
+    public void setAvailableAmount(int availableAmount) {
         this.availableAmount = availableAmount;
     }
 }
