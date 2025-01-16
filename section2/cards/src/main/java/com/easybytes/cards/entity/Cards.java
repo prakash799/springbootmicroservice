@@ -3,7 +3,7 @@ package com.easybytes.cards.entity;
 import jakarta.persistence.*;
 
 @Entity
-public class Cards {
+public class Cards extends BaseEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")

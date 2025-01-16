@@ -7,16 +7,18 @@ import com.easybytes.cards.exception.CardAlreadyExistsException;
 import com.easybytes.cards.exception.ResourceNotFoundException;
 import com.easybytes.cards.mapper.CardsMapper;
 import com.easybytes.cards.repository.CardsRepository;
-import com.easybytes.cards.service.CardsService;
+import com.easybytes.cards.service.ICardsService;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 import java.util.Random;
 
-public class ICardsServiceImpl implements CardsService {
+@Service
+public class CardsServiceImpl implements ICardsService {
 
     private CardsRepository cardsRepository;
 
-    public ICardsServiceImpl(CardsRepository cardsRepository) {
+    public CardsServiceImpl(CardsRepository cardsRepository) {
         this.cardsRepository = cardsRepository;
     }
 
@@ -47,6 +49,7 @@ public class ICardsServiceImpl implements CardsService {
         );
         return CardsMapper.mapToCardsDto(cards, new CardsDto());
     }
+
 
     @Override
     public boolean updateCard(CardsDto cardsDto) {

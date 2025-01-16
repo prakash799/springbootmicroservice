@@ -1,4 +1,4 @@
-package com.easybytes.cards.entity;
+package com.easybytes.loans.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;
@@ -15,21 +15,31 @@ import java.time.LocalDateTime;
 @EntityListeners(AuditingEntityListener.class)
 public class BaseEntity {
 
-    @Column(updatable = false)
     @CreatedDate
+    @Column(updatable = false)
     private LocalDateTime createdAt = LocalDateTime.now();
 
-    @Column(updatable = false)
     @CreatedBy
-    private String createdBy = "CARDS_MS";
+    @Column(updatable = false)
+    private String createdBy = "LOAN_MS";
 
-    @Column(insertable = false)
     @LastModifiedDate
+    @Column(insertable = false)
     private LocalDateTime updatedAt = LocalDateTime.now();
 
-    @Column(insertable = false)
     @LastModifiedBy
-    private String updatedBy = "CARDS_MS";
+    @Column(insertable = false)
+    private String updatedBy;
+
+    public BaseEntity() {
+    }
+
+    public BaseEntity(LocalDateTime createdAt, String createdBy, LocalDateTime updatedAt, String updatedBy) {
+        this.createdAt = createdAt;
+        this.createdBy = createdBy;
+        this.updatedAt = updatedAt;
+        this.updatedBy = updatedBy;
+    }
 
     public LocalDateTime getCreatedAt() {
         return createdAt;
@@ -66,9 +76,9 @@ public class BaseEntity {
     @Override
     public String toString() {
         return "BaseEntity{" +
-                "createdAt='" + createdAt + '\'' +
+                "createdAt=" + createdAt +
                 ", createdBy='" + createdBy + '\'' +
-                ", updatedAt='" + updatedAt + '\'' +
+                ", updatedAt=" + updatedAt +
                 ", updatedBy='" + updatedBy + '\'' +
                 '}';
     }

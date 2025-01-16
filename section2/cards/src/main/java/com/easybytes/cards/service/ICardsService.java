@@ -2,7 +2,7 @@ package com.easybytes.cards.service;
 
 import com.easybytes.cards.dto.CardsDto;
 
-public interface CardsService {
+public interface ICardsService {
 
     void createCard(String mobileNumber);
 

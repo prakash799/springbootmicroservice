@@ -5,8 +5,8 @@ import jakarta.validation.constraints.Pattern;
 
 public class CardsDto {
 
-    @NotEmpty
-    @Pattern(regexp = "(^$|[0-9]{10})", message = "Mobile number cannot be empty")
+    @NotEmpty(message = "Mobile number cannot be empty")
+    @Pattern(regexp = "(^$|[0-9]{10})", message = "Mobile Number must be 10 digits")
     private String mobileNumber;
 
     @NotEmpty(message = "Card Number cannot be empty")
